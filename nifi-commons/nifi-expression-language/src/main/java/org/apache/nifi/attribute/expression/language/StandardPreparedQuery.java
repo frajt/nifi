@@ -55,7 +55,6 @@ public class StandardPreparedQuery implements PreparedQuery {
     
 
     public StandardPreparedQuery(final List<String> queryStrings, final Map<String, CompiledExpression> expressions) {
-        System.err.println("NEW: StandardPreparedQuery : " + queryStrings);
         this.queryStrings = queryStrings;
         this.expressionEntries = new HashMap<>(expressions.size());
         expressions.forEach((val, compiledExpression) -> {
