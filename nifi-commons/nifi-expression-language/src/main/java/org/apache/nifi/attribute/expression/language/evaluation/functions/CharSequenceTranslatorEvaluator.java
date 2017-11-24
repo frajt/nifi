@@ -75,6 +75,12 @@ public class CharSequenceTranslatorEvaluator extends StringEvaluator {
     }
 
     @Override
+    public void reset() {
+        this.subject.reset();
+        super.reset();
+    }
+    
+    @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {
         final String subjectValue = subject.evaluate(attributes).getValue();
         return new StringQueryResult(subjectValue == null ? "" : method.translate(subjectValue));

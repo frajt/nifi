@@ -30,6 +30,12 @@ public class AttributeEvaluator extends StringEvaluator {
     public AttributeEvaluator(final Evaluator<String> nameEvaluator) {
         this.nameEvaluator = nameEvaluator;
     }
+    
+    @Override
+    public void reset() {
+        this.nameEvaluator.reset();
+        super.reset();
+    }
 
     @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {

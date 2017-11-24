@@ -42,6 +42,12 @@ public class WholeNumberCastEvaluator extends WholeNumberEvaluator {
     }
 
     @Override
+    public void reset() {
+        this.subjectEvaluator.reset();
+        super.reset();
+    }
+
+    @Override
     public QueryResult<Long> evaluate(final Map<String, String> attributes) {
         final QueryResult<?> result = subjectEvaluator.evaluate(attributes);
         if (result.getValue() == null) {

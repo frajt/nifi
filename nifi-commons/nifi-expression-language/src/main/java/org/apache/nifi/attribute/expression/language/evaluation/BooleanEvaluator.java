@@ -22,6 +22,11 @@ public abstract class BooleanEvaluator implements Evaluator<Boolean> {
     private String token;
 
     @Override
+    public void reset() {
+      this.token = null;
+    }
+    
+    @Override
     public ResultType getResultType() {
         return ResultType.BOOLEAN;
     }

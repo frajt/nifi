@@ -41,6 +41,13 @@ public class MultiMatchAttributeEvaluator extends MultiAttributeEvaluator {
         this.evaluationType = evaluationType;
     }
 
+    @Override
+    public void reset() {
+        this.attributeNames.clear();
+        this.evaluationCount = 0;
+        super.reset();
+    }
+    
     /**
      * Can be called only after the first call to evaluate
      *

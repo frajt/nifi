@@ -32,6 +32,11 @@ public class NumberToDateEvaluator extends DateEvaluator {
         this.subject = subject;
     }
 
+    public void reset() {
+      this.subject.reset();
+      super.reset();
+    }
+    
     @Override
     public QueryResult<Date> evaluate(final Map<String, String> attributes) {
         final QueryResult<Long> result = subject.evaluate(attributes);

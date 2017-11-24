@@ -41,4 +41,12 @@ public interface Evaluator<T> {
      * @return the token that caused this Evaluator to be created
      */
     String getToken();
+    
+    /**
+     * Resets the evaluator for the next evaluation.
+     */
+    default void reset() {
+      // NOOP
+      ;
+    }
 }

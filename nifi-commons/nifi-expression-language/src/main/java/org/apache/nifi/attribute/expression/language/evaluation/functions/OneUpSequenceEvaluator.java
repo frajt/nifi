@@ -27,7 +27,12 @@ import org.apache.nifi.attribute.expression.language.evaluation.WholeNumberQuery
 public class OneUpSequenceEvaluator extends WholeNumberEvaluator {
 
     private static final AtomicLong value = new AtomicLong(0L);
-
+    
+    @Override
+    public void reset() {
+        super.reset();
+    }
+    
     @Override
     public QueryResult<Long> evaluate(final Map<String, String> attributes) {
         return new WholeNumberQueryResult(value.getAndIncrement());

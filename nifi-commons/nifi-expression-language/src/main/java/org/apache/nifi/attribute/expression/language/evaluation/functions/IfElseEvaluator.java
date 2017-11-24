@@ -34,6 +34,14 @@ public class IfElseEvaluator extends StringEvaluator {
         this.trueEvaluator = trueEvaluator;
         this.falseEvaluator = falseEvaluator;
     }
+    
+    @Override
+    public void reset() {
+        this.subject.reset();
+        this.trueEvaluator.reset();
+        this.falseEvaluator.reset();
+        super.reset();
+    }
 
     @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {

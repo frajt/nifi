@@ -30,6 +30,11 @@ public class NotNullEvaluator extends BooleanEvaluator {
     public NotNullEvaluator(final Evaluator<?> subject) {
         this.subject = subject;
     }
+    
+    public void reset() {
+      this.subject.reset();
+      super.reset();
+    }
 
     @Override
     public QueryResult<Boolean> evaluate(final Map<String, String> attributes) {

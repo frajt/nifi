@@ -35,7 +35,16 @@ public class JoinEvaluator extends StringEvaluator implements ReduceEvaluator<St
         this.subjectEvaluator = subject;
         this.delimiterEvaluator = delimiter;
     }
-
+    
+    @Override
+    public void reset() {
+        this.subjectEvaluator.reset();
+        this.delimiterEvaluator.reset();
+        this.sb.setLength(0);
+        this.evalCount = 0;
+        super.reset();
+    }
+    
     @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {
         String subject = subjectEvaluator.evaluate(attributes).getValue();

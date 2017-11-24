@@ -37,6 +37,18 @@ public class MathEvaluator extends NumberEvaluator {
         this.methodName = methodName;
         this.optionalArg = optionalArg;
     }
+    
+    @Override
+    public void reset() {
+      if(this.subject != null) {
+          this.subject.reset();
+      }
+      this.methodName.reset();
+      if(this.optionalArg != null) {
+        this.optionalArg.reset();
+      }
+      super.reset();
+    }
 
     @Override
     public QueryResult<Number> evaluate(final Map<String, String> attributes) {

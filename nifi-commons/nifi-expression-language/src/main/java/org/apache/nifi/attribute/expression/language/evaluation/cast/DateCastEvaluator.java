@@ -54,6 +54,11 @@ public class DateCastEvaluator extends DateEvaluator {
 
         this.subjectEvaluator = subjectEvaluator;
     }
+    
+    public void reset() {
+      this.subjectEvaluator.reset();
+      super.reset();
+    }
 
     @Override
     public QueryResult<Date> evaluate(final Map<String, String> attributes) {

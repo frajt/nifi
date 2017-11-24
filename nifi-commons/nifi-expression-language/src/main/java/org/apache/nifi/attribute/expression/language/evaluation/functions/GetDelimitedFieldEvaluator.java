@@ -62,7 +62,18 @@ public class GetDelimitedFieldEvaluator extends StringEvaluator {
         this.escapeCharEval = escapeChar;
         this.stripCharsEval = stripChars;
     }
-
+    
+    @Override
+    public void reset() {
+        this.subjectEval.reset();
+        this.indexEval.reset();
+        this.delimiterEval.reset();
+        this.quoteCharEval.reset();
+        this.escapeCharEval.reset();
+        this.stripCharsEval.reset();
+        super.reset();
+    }
+    
     @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {
         final String subject = subjectEval.evaluate(attributes).getValue();

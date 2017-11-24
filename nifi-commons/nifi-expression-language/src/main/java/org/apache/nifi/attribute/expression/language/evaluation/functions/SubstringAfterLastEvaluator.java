@@ -34,6 +34,13 @@ public class SubstringAfterLastEvaluator extends StringEvaluator {
     }
 
     @Override
+    public void reset() {
+        this.subject.reset();
+        this.afterEvaluator.reset();
+        super.reset();
+    }
+
+    @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {
         final String subjectValue = subject.evaluate(attributes).getValue();
         if (subjectValue == null) {

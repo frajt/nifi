@@ -32,6 +32,12 @@ public class Base64DecodeEvaluator extends StringEvaluator {
     public Base64DecodeEvaluator(final Evaluator<String> subject) {
         this.subject = subject;
     }
+    
+    @Override
+    public void reset() {
+        this.subject.reset();
+        super.reset();
+    }
 
     @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {

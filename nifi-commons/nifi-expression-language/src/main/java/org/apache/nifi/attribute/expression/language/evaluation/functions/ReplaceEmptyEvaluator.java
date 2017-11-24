@@ -33,6 +33,13 @@ public class ReplaceEmptyEvaluator extends StringEvaluator {
     }
 
     @Override
+    public void reset() {
+        this.subjectEvaluator.reset();
+        this.replacementEvaluator.reset();
+        super.reset();
+    }
+    
+    @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {
         final QueryResult<String> subjectResult = subjectEvaluator.evaluate(attributes);
         final String subjectValue = subjectResult.getValue();

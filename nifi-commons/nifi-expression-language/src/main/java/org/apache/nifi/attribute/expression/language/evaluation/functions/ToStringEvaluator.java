@@ -32,6 +32,12 @@ public class ToStringEvaluator extends StringEvaluator {
     }
 
     @Override
+    public void reset() {
+        this.subject.reset();
+        super.reset();
+    }
+
+    @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {
         final Object result = subject.evaluate(attributes).getValue();
         return new StringQueryResult(result == null ? null : result.toString());

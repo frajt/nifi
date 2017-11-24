@@ -39,6 +39,16 @@ public class ToRadixEvaluator extends StringEvaluator {
         this.radixEvaluator = radixEvaluator;
         this.minimumWidthEvaluator = minimumWidthEvaluator;
     }
+    
+    @Override
+    public void reset() {
+        this.numberEvaluator.reset();
+        this.radixEvaluator.reset();
+        if(this.minimumWidthEvaluator != null) {
+          this.minimumWidthEvaluator.reset();
+        }
+        super.reset();
+    }
 
     @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {

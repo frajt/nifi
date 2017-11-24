@@ -34,6 +34,13 @@ public class IndexOfEvaluator extends WholeNumberEvaluator {
     }
 
     @Override
+    public void reset() {
+        this.subject.reset();
+        this.indexEvaluator.reset();
+        super.reset();
+    }
+    
+    @Override
     public QueryResult<Long> evaluate(final Map<String, String> attributes) {
         final String subjectValue = subject.evaluate(attributes).getValue();
         if (subjectValue == null) {

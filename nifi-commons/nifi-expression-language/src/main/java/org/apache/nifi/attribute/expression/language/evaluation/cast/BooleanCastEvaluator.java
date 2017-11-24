@@ -31,6 +31,11 @@ public class BooleanCastEvaluator extends BooleanEvaluator {
     public BooleanCastEvaluator(final StringEvaluator subjectEvaluator) {
         this.subjectEvaluator = subjectEvaluator;
     }
+    
+    public void reset() {
+      this.subjectEvaluator.reset();
+      super.reset();
+    }
 
     @Override
     public QueryResult<Boolean> evaluate(final Map<String, String> attributes) {

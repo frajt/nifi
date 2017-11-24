@@ -29,6 +29,12 @@ public class ToLiteralEvaluator extends StringEvaluator {
     public ToLiteralEvaluator(final Evaluator<?> argEvaluator) {
         this.argEvaluator = argEvaluator;
     }
+    
+    @Override
+    public void reset() {
+        this.argEvaluator.reset();
+        super.reset();
+    }
 
     @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {

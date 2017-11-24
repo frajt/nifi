@@ -34,6 +34,11 @@ public class InEvaluator extends BooleanEvaluator {
         this.search = list;
     }
 
+    public void reset() {
+      this.subject.reset();
+      super.reset();
+    }
+    
     @Override
     public QueryResult<Boolean> evaluate(final Map<String, String> attributes) {
         final String subjectValue = subject.evaluate(attributes).getValue();

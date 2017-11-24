@@ -33,6 +33,12 @@ public class EqualsIgnoreCaseEvaluator extends BooleanEvaluator {
         this.compareTo = compareTo;
     }
 
+    public void reset() {
+      this.subject.reset();
+      this.compareTo.reset();
+      super.reset();
+    }
+
     @Override
     public QueryResult<Boolean> evaluate(final Map<String, String> attributes) {
         final Object a = subject.evaluate(attributes).getValue();

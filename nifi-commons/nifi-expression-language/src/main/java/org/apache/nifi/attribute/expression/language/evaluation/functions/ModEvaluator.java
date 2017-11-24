@@ -32,6 +32,13 @@ public class ModEvaluator extends NumberEvaluator {
         this.subject = subject;
         this.modValue = modValue;
     }
+    
+    @Override
+    public void reset() {
+      this.subject.reset();
+      this.modValue.reset();
+      super.reset();
+    }
 
     @Override
     public QueryResult<Number> evaluate(final Map<String, String> attributes) {

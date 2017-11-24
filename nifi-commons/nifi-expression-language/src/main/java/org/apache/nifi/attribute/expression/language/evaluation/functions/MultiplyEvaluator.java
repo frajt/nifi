@@ -32,7 +32,14 @@ public class MultiplyEvaluator extends NumberEvaluator {
         this.subject = subject;
         this.multiplyValue = multiplyValue;
     }
-
+    
+    @Override
+    public void reset() {
+      this.subject.reset();
+      this.multiplyValue.reset();
+      super.reset();
+    }
+    
     @Override
     public QueryResult<Number> evaluate(final Map<String, String> attributes) {
         final Number subjectValue = subject.evaluate(attributes).getValue();

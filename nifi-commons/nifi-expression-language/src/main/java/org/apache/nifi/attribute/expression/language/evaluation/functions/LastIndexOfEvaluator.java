@@ -32,6 +32,13 @@ public class LastIndexOfEvaluator extends WholeNumberEvaluator {
         this.subject = subject;
         this.indexEvaluator = indexEvaluator;
     }
+    
+    @Override
+    public void reset() {
+        this.subject.reset();
+        this.indexEvaluator.reset();
+        super.reset();
+    }
 
     @Override
     public QueryResult<Long> evaluate(final Map<String, String> attributes) {

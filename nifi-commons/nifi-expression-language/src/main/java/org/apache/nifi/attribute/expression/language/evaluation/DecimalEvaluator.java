@@ -22,6 +22,11 @@ public abstract class DecimalEvaluator implements Evaluator<Double> {
     private String token;
 
     @Override
+    public void reset() {
+      this.token = null;
+    }
+
+    @Override
     public ResultType getResultType() {
         return ResultType.DECIMAL;
     }

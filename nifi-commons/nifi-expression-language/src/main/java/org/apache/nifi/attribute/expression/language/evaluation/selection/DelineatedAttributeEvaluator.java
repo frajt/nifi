@@ -36,7 +36,19 @@ public class DelineatedAttributeEvaluator extends MultiAttributeEvaluator {
         this.delimiterEvaluator = delimiterEvaluator;
         this.evaluationType = evaluationType;
     }
-
+    
+    @Override
+    public void reset() {
+        this.subjectEvaluator.reset();
+        this.delimiterEvaluator.reset();
+        this.subjectEvaluator.reset();
+        this.delimiterEvaluator.reset();
+        this.delineatedValues = null;
+        this.evaluationCount = 0;
+        this.evaluationsLeft = 1;
+        super.reset();
+    }
+    
     @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {
         if (delineatedValues == null) {

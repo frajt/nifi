@@ -28,7 +28,11 @@ public class RandomNumberGeneratorEvaluator extends WholeNumberEvaluator {
 
     private static final Random RNG = new Random();
 
-
+    @Override
+    public void reset() {
+        super.reset();
+    }
+    
     @Override
     public QueryResult<Long> evaluate(final Map<String, String> attributes) {
         return new WholeNumberQueryResult(Math.abs(RNG.nextLong()));

@@ -27,6 +27,11 @@ public class BooleanLiteralEvaluator extends BooleanEvaluator {
 
     private final boolean value;
 
+    @Override
+    public void reset() {
+      super.reset();
+    }
+    
     public BooleanLiteralEvaluator(final boolean value) {
         this.value = value;
     }

@@ -33,6 +33,11 @@ public class DecimalLiteralEvaluator extends DecimalEvaluator {
     }
 
     @Override
+    public void reset() {
+      super.reset();
+    }
+    
+    @Override
     public QueryResult<Double> evaluate(final Map<String, String> attributes) {
         return new DecimalQueryResult(literal);
     }

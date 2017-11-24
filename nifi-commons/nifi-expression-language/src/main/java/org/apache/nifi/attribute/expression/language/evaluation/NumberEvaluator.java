@@ -22,6 +22,11 @@ public abstract class NumberEvaluator implements Evaluator<Number> {
     private String token;
 
     @Override
+    public void reset() {
+        this.token = null;
+    }
+
+    @Override
     public ResultType getResultType() {
         return ResultType.NUMBER;
     }

@@ -34,6 +34,13 @@ public class EqualsEvaluator extends BooleanEvaluator {
         this.subject = subject;
         this.compareTo = compareTo;
     }
+    
+    public void reset() {
+      this.subject.reset();
+      this.compareTo.reset();
+      super.reset();
+    }
+
 
     @Override
     public QueryResult<Boolean> evaluate(final Map<String, String> attributes) {

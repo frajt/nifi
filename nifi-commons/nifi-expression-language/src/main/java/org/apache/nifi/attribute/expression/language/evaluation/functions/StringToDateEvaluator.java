@@ -41,6 +41,15 @@ public class StringToDateEvaluator extends DateEvaluator {
         this.timeZone = timeZone;
     }
 
+    public void reset() {
+      this.subject.reset();
+      this.format.reset();
+      if(this.timeZone != null) {
+        this.timeZone.reset();
+      }
+      super.reset();
+    }
+    
     @Override
     public QueryResult<Date> evaluate(final Map<String, String> attributes) {
         final String subjectValue = subject.evaluate(attributes).getValue();

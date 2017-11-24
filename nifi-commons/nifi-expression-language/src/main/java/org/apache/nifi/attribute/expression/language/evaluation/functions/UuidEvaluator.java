@@ -27,6 +27,11 @@ import org.apache.nifi.attribute.expression.language.evaluation.StringQueryResul
 public class UuidEvaluator extends StringEvaluator {
 
     @Override
+    public void reset() {
+        super.reset();
+    }
+
+    @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {
         return new StringQueryResult(UUID.randomUUID().toString());
     }

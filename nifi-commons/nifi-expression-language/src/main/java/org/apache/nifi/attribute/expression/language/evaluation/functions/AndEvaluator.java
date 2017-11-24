@@ -33,6 +33,12 @@ public class AndEvaluator extends BooleanEvaluator {
         this.rhsEvaluator = rhsEvaluator;
     }
 
+    public void reset() {
+      this.subjectEvaluator.reset();
+      this.rhsEvaluator.reset();
+      super.reset();
+    }
+
     @Override
     public QueryResult<Boolean> evaluate(final Map<String, String> attributes) {
         final QueryResult<Boolean> subjectValue = subjectEvaluator.evaluate(attributes);

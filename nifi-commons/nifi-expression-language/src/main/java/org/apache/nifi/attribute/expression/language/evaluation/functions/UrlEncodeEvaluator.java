@@ -34,6 +34,12 @@ public class UrlEncodeEvaluator extends StringEvaluator {
     }
 
     @Override
+    public void reset() {
+        this.subject.reset();
+        super.reset();
+    }
+    
+    @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {
         final String subjectValue = subject.evaluate(attributes).getValue();
         if (subjectValue == null) {

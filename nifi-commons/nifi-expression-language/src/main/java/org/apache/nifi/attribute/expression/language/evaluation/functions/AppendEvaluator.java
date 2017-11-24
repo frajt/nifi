@@ -34,6 +34,13 @@ public class AppendEvaluator extends StringEvaluator {
     }
 
     @Override
+    public void reset() {
+        this.subject.reset();
+        this.appendEvaluator.reset();
+        super.reset();
+    }
+    
+    @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {
         final String subjectValue = subject.evaluate(attributes).getValue();
         final String appendValue = appendEvaluator.evaluate(attributes).getValue();

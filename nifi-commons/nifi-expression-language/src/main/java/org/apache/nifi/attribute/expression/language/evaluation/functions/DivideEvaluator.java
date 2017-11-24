@@ -32,6 +32,13 @@ public class DivideEvaluator extends NumberEvaluator {
         this.subject = subject;
         this.divideValue = divideValue;
     }
+    
+    @Override
+    public void reset() {
+      this.subject.reset();
+      this.divideValue.reset();
+      super.reset();
+    }
 
     @Override
     public QueryResult<Number> evaluate(final Map<String, String> attributes) {

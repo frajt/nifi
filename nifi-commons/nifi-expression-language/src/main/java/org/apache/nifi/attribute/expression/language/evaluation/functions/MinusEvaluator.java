@@ -34,6 +34,13 @@ public class MinusEvaluator extends NumberEvaluator {
     }
 
     @Override
+    public void reset() {
+      this.subject.reset();
+      this.minusValue.reset();
+      super.reset();
+    }
+    
+    @Override
     public QueryResult<Number> evaluate(final Map<String, String> attributes) {
         final Number subjectValue = subject.evaluate(attributes).getValue();
         if (subjectValue == null) {

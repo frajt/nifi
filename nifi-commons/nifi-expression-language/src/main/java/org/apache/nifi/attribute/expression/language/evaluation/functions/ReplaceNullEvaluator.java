@@ -32,6 +32,13 @@ public class ReplaceNullEvaluator extends StringEvaluator {
         this.subject = subject;
         this.resultEvaluator = resultEvaluator;
     }
+    
+    @Override
+    public void reset() {
+        this.subject.reset();
+        this.resultEvaluator.reset();
+        super.reset();
+    }
 
     @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {

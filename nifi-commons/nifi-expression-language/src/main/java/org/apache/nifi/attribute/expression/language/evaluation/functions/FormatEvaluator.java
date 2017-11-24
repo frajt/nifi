@@ -39,6 +39,17 @@ public class FormatEvaluator extends StringEvaluator {
         this.format = format;
         this.timeZone = timeZone;
     }
+    
+    @Override
+    public void reset() {
+        this.subject.reset();
+        this.format.reset();
+        if(this.timeZone != null) {
+          this.timeZone.reset();
+        }
+        super.reset();
+    }
+    
 
     @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {

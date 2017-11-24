@@ -30,6 +30,12 @@ public class LengthEvaluator extends WholeNumberEvaluator {
     public LengthEvaluator(final Evaluator<String> subject) {
         this.subject = subject;
     }
+    
+    @Override
+    public void reset() {
+        this.subject.reset();
+        super.reset();
+    }
 
     @Override
     public QueryResult<Long> evaluate(final Map<String, String> attributes) {

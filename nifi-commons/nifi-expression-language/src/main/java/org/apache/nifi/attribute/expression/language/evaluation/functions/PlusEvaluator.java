@@ -32,6 +32,13 @@ public class PlusEvaluator extends NumberEvaluator {
         this.subject = subject;
         this.plusValue = plusValue;
     }
+    
+    @Override
+    public void reset() {
+      this.subject.reset();
+      this.plusValue.reset();
+      super.reset();
+    }
 
     @Override
     public QueryResult<Number> evaluate(final Map<String, String> attributes) {

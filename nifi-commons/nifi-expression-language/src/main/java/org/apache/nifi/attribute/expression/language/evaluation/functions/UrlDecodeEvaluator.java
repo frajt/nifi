@@ -32,6 +32,12 @@ public class UrlDecodeEvaluator extends StringEvaluator {
     public UrlDecodeEvaluator(final Evaluator<String> subject) {
         this.subject = subject;
     }
+    
+    @Override
+    public void reset() {
+        this.subject.reset();
+        super.reset();
+    }
 
     @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {

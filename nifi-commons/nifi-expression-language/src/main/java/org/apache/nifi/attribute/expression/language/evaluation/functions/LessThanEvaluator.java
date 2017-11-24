@@ -32,6 +32,12 @@ public class LessThanEvaluator extends BooleanEvaluator {
         this.subject = subject;
         this.comparison = comparison;
     }
+    
+    public void reset() {
+      this.subject.reset();
+      this.comparison.reset();
+      super.reset();
+    }
 
     @Override
     public QueryResult<Boolean> evaluate(final Map<String, String> attributes) {

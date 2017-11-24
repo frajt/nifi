@@ -32,6 +32,11 @@ public class IPEvaluator extends StringEvaluator {
     public IPEvaluator() throws UnknownHostException {
         ipAddress = new StringQueryResult(InetAddress.getLocalHost().getHostAddress());
     }
+    
+    @Override
+    public void reset() {
+        super.reset();
+    }
 
     @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {

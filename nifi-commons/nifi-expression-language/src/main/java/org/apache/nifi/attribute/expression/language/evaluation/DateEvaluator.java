@@ -24,6 +24,11 @@ public abstract class DateEvaluator implements Evaluator<Date> {
     private String token;
 
     @Override
+    public void reset() {
+      this.token = null;
+    }
+
+    @Override
     public ResultType getResultType() {
         return ResultType.DATE;
     }

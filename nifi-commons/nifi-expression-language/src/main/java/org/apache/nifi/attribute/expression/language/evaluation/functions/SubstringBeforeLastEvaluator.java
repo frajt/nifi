@@ -32,6 +32,13 @@ public class SubstringBeforeLastEvaluator extends StringEvaluator {
         this.subject = subject;
         this.beforeEvaluator = beforeEvaluator;
     }
+    
+    @Override
+    public void reset() {
+        this.subject.reset();
+        this.beforeEvaluator.reset();
+        super.reset();
+    }
 
     @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {

@@ -38,11 +38,9 @@ import org.apache.nifi.processor.exception.ProcessException;
  * once.
  */
 public class Query {
-
     private final String query;
     private final Tree tree;
     private final Evaluator<?> evaluator;
-    private final AtomicBoolean evaluated = new AtomicBoolean(false);
 
     private Query(final String query, final Tree tree, final Evaluator<?> evaluator) {
         this.query = query;
@@ -211,6 +209,18 @@ public class Query {
         final String escaped = value.replace("$$", "$");
         return decorator == null ? escaped : decorator.decorate(escaped);
     }
+    
+    String evaluateExpression(final Map<String, String> valueMap, final AttributeValueDecorator decorator,
+                                     final Map<String, String> stateVariables) throws ProcessException {
+        final Object evaluated = this.evaluate(valueMap, stateVariables).getValue();
+        if (evaluated == null) {
+            return null;
+        }
+
+        final String value = evaluated.toString();
+        final String escaped = value.replace("$$", "$");
+        return decorator == null ? escaped : decorator.decorate(escaped);
+    }    
 
     static String evaluateExpressions(final String rawValue, Map<String, String> expressionMap, final AttributeValueDecorator decorator, final Map<String, String> stateVariables)
             throws ProcessException {
@@ -309,17 +319,24 @@ public class Query {
     }
 
     QueryResult<?> evaluate(final Map<String, String> attributes, final Map<String, String> stateMap) {
-        if (evaluated.getAndSet(true)) {
-            throw new IllegalStateException("A Query cannot be evaluated more than once");
-        }
-        if (stateMap != null) {
-            AttributesAndState attributesAndState = new AttributesAndState(attributes, stateMap);
-            return evaluator.evaluate(attributesAndState);
-        } else {
-            return evaluator.evaluate(attributes);
-        }
+      synchronized(this.evaluator) {
+        return Query.evaluate(this.evaluator, attributes, stateMap);
+      }
     }
 
+    static QueryResult<?> evaluate(final Evaluator<?> evaluator, final Map<String, String> attributes, final Map<String, String> stateMap) {
+        try {
+            if (stateMap != null) {
+                AttributesAndState attributesAndState = new AttributesAndState(attributes, stateMap);
+                return evaluator.evaluate(attributesAndState);
+            } else {
+                return evaluator.evaluate(attributes);
+            }
+        } finally {
+          evaluator.reset();
+        }
+    }    
+    
 
     Tree getTree() {
         return this.tree;

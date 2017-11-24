@@ -32,6 +32,12 @@ public class WholeNumberLiteralEvaluator extends WholeNumberEvaluator {
     }
 
     @Override
+    public void reset() {
+        super.reset();
+    }
+
+
+    @Override
     public QueryResult<Long> evaluate(final Map<String, String> attributes) {
         return new WholeNumberQueryResult(literal);
     }

@@ -32,7 +32,14 @@ public class FromRadixEvaluator extends WholeNumberEvaluator {
         this.numberEvaluator = subject;
         this.radixEvaluator = radixEvaluator;
     }
-
+    
+    @Override
+    public void reset() {
+        this.numberEvaluator.reset();
+        this.radixEvaluator.reset();
+        super.reset();
+    }
+    
     @Override
     public QueryResult<Long> evaluate(final Map<String, String> attributes) {
         final String result = numberEvaluator.evaluate(attributes).getValue();

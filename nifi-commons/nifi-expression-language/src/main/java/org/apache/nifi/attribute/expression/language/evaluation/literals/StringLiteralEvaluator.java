@@ -65,6 +65,11 @@ public class StringLiteralEvaluator extends StringEvaluator {
     }
 
     @Override
+    public void reset() {
+        super.reset();
+    }
+
+    @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {
         return new StringQueryResult(value);
     }

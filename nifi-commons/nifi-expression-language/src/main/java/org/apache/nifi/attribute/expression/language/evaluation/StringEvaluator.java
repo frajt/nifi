@@ -22,6 +22,11 @@ public abstract class StringEvaluator implements Evaluator<String> {
     private String token;
 
     @Override
+    public void reset() {
+        this.token = null;
+    }
+
+    @Override
     public ResultType getResultType() {
         return ResultType.STRING;
     }

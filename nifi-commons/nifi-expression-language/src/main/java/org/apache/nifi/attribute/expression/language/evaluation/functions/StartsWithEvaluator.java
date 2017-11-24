@@ -32,6 +32,12 @@ public class StartsWithEvaluator extends BooleanEvaluator {
         this.subject = subject;
         this.search = search;
     }
+    
+    public void reset() {
+      this.subject.reset();
+      this.search.reset();
+      super.reset();
+    }
 
     @Override
     public QueryResult<Boolean> evaluate(final Map<String, String> attributes) {

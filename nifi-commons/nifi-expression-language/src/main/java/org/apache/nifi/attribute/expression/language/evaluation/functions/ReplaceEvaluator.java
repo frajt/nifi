@@ -34,6 +34,14 @@ public class ReplaceEvaluator extends StringEvaluator {
         this.search = search;
         this.replacement = replacement;
     }
+    
+    @Override
+    public void reset() {
+        this.subject.reset();
+        this.search.reset();
+        this.replacement.reset();
+        super.reset();
+    }
 
     @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {

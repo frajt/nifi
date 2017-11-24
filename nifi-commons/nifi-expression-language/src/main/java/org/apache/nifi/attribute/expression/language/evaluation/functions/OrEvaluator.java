@@ -32,6 +32,12 @@ public class OrEvaluator extends BooleanEvaluator {
         this.subjectEvaluator = subjectEvaluator;
         this.rhsEvaluator = rhsEvaluator;
     }
+    
+    public void reset() {
+      this.subjectEvaluator.reset();
+      this.rhsEvaluator.reset();
+      super.reset();
+    }
 
     @Override
     public QueryResult<Boolean> evaluate(final Map<String, String> attributes) {

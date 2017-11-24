@@ -27,6 +27,11 @@ import org.apache.nifi.attribute.expression.language.evaluation.QueryResult;
 public class NowEvaluator extends DateEvaluator {
 
     @Override
+    public void reset() {
+      super.reset();
+    }
+
+    @Override
     public QueryResult<Date> evaluate(final Map<String, String> attributes) {
         return new DateQueryResult(new Date());
     }

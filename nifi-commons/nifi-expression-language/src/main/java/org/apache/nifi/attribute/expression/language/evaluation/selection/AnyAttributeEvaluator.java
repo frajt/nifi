@@ -33,6 +33,12 @@ public class AnyAttributeEvaluator extends BooleanEvaluator implements Iterating
         this.multiAttributeEvaluator = multiAttributeEvaluator;
     }
 
+    public void reset() {
+      this.booleanEvaluator.reset();
+      this.multiAttributeEvaluator.reset();
+      super.reset();
+    }
+    
     @Override
     public QueryResult<Boolean> evaluate(final Map<String, String> attributes) {
         QueryResult<Boolean> attributeValueQuery = booleanEvaluator.evaluate(attributes);

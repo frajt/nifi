@@ -31,6 +31,12 @@ public class NotEvaluator extends BooleanEvaluator {
         this.subjectEvaluator = subjectEvaluator;
     }
 
+    
+    public void reset() {
+      this.subjectEvaluator.reset();
+      super.reset();
+    }
+    
     @Override
     public QueryResult<Boolean> evaluate(final Map<String, String> attributes) {
         final QueryResult<Boolean> subjectValue = subjectEvaluator.evaluate(attributes);

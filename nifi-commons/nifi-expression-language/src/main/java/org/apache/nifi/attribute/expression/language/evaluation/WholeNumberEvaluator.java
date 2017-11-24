@@ -22,6 +22,11 @@ public abstract class WholeNumberEvaluator implements Evaluator<Long> {
     private String token;
 
     @Override
+    public void reset() {
+        this.token = null;
+    }
+    
+    @Override
     public ResultType getResultType() {
         return ResultType.WHOLE_NUMBER;
     }
@@ -39,5 +44,5 @@ public abstract class WholeNumberEvaluator implements Evaluator<Long> {
     @Override
     public void setToken(final String token) {
         this.token = token;
-    }
+    }    
 }

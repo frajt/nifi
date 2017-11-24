@@ -32,6 +32,13 @@ public class PrependEvaluator extends StringEvaluator {
         this.subject = subject;
         this.prependEvaluator = prepend;
     }
+    
+    @Override
+    public void reset() {
+        this.subject.reset();
+        this.prependEvaluator.reset();
+        super.reset();
+    }
 
     @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {

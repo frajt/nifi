@@ -32,6 +32,12 @@ public class AllAttributesEvaluator extends BooleanEvaluator implements Iteratin
         this.booleanEvaluator = booleanEvaluator;
         this.multiAttributeEvaluator = multiAttributeEvaluator;
     }
+    
+    public void reset() {
+      this.booleanEvaluator.reset();
+      this.multiAttributeEvaluator.reset();
+      super.reset();
+    }
 
     @Override
     public QueryResult<Boolean> evaluate(final Map<String, String> attributes) {

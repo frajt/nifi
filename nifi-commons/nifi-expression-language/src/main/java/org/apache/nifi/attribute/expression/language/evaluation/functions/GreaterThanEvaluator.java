@@ -33,6 +33,12 @@ public class GreaterThanEvaluator extends BooleanEvaluator {
         this.comparison = comparison;
     }
 
+    public void reset() {
+      this.subject.reset();
+      this.comparison.reset();
+      super.reset();
+    }
+
     @Override
     public QueryResult<Boolean> evaluate(final Map<String, String> attributes) {
         final Number subjectValue = subject.evaluate(attributes).getValue();

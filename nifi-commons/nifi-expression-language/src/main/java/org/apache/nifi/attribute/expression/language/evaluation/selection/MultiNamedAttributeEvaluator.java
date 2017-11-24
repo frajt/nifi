@@ -35,7 +35,14 @@ public class MultiNamedAttributeEvaluator extends MultiAttributeEvaluator {
         this.attributeNames = attributeNames;
         this.evaluationType = evaluationType;
     }
-
+    
+    @Override
+    public void reset() {     
+        this.evaluationCount = 0;
+        this.matchingAttributeNames = null;
+        super.reset();
+    }
+    
     @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {
         matchingAttributeNames = new ArrayList<>(attributeNames);

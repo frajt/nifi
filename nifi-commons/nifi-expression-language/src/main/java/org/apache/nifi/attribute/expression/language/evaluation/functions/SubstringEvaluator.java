@@ -40,6 +40,16 @@ public class SubstringEvaluator extends StringEvaluator {
         this.startIndex = startIndex;
         this.endIndex = null;
     }
+    
+    @Override
+    public void reset() {
+        this.subject.reset();
+        this.startIndex.reset();
+        if(this.endIndex != null) {
+          this.endIndex.reset();
+        }
+        super.reset();
+    }
 
     @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {

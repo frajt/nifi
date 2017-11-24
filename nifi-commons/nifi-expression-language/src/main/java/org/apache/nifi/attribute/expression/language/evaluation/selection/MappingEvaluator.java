@@ -32,6 +32,13 @@ public class MappingEvaluator<T> implements Evaluator<T> {
         this.mappingEvaluator = mappingEvaluator;
         this.multiAttributeEvaluator = multiAttributeEval;
     }
+    
+    @Override
+    public void reset() {
+        this.mappingEvaluator.reset();
+        this.multiAttributeEvaluator.reset();
+        this.token = null;
+    }
 
     @Override
     public QueryResult<T> evaluate(final Map<String, String> attributes) {
@@ -71,5 +78,5 @@ public class MappingEvaluator<T> implements Evaluator<T> {
 
     public MultiAttributeEvaluator getVariableIteratingEvaluator() {
         return multiAttributeEvaluator;
-    }
+    }    
 }

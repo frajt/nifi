@@ -32,7 +32,14 @@ public class CountEvaluator extends WholeNumberEvaluator implements ReduceEvalua
     public CountEvaluator(final Evaluator<?> subjectEvaluator) {
         this.subjectEvaluator = subjectEvaluator;
     }
-
+    
+    @Override
+    public void reset() {
+        this.subjectEvaluator.reset();
+        this.count = 0;
+        super.reset();
+    }
+    
     @Override
     public QueryResult<Long> evaluate(final Map<String, String> attributes) {
         final QueryResult<?> result = subjectEvaluator.evaluate(attributes);

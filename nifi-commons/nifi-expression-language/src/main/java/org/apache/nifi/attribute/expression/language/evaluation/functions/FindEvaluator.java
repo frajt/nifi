@@ -44,6 +44,12 @@ public class FindEvaluator extends BooleanEvaluator {
             this.compiledPattern = null;
         }
     }
+    
+    public void reset() {
+      this.subject.reset();
+      this.search.reset();
+      super.reset();
+    }
 
     @Override
     public QueryResult<Boolean> evaluate(final Map<String, String> attributes) {

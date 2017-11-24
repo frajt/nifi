@@ -40,6 +40,12 @@ public class NumberCastEvaluator extends NumberEvaluator {
         }
         this.subjectEvaluator = subjectEvaluator;
     }
+    
+    @Override
+    public void reset() {
+      this.subjectEvaluator.reset();
+      super.reset();
+    }
 
     @Override
     public QueryResult<Number> evaluate(final Map<String, String> attributes) {

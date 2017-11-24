@@ -46,6 +46,11 @@ public class HostnameEvaluator extends StringEvaluator {
     }
 
     @Override
+    public void reset() {
+        super.reset();
+    }
+    
+    @Override
     public QueryResult<String> evaluate(final Map<String, String> attributes) {
         return hostname;
     }

@@ -44,6 +44,14 @@ public class MatchesEvaluator extends BooleanEvaluator {
             this.compiledPattern = null;
         }
     }
+    
+    public void reset() {
+      this.subject.reset();
+      if(this.search != null) {
+        this.search.reset();
+      }
+      super.reset();
+    }
 
     @Override
     public QueryResult<Boolean> evaluate(final Map<String, String> attributes) {

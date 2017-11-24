@@ -34,6 +34,12 @@ public class GetStateVariableEvaluator extends StringEvaluator {
     }
 
     @Override
+    public void reset() {
+        this.subject.reset();
+        super.reset();
+    }
+    
+    @Override
     public QueryResult<String> evaluate(Map<String, String> attributes) {
         if (!(attributes instanceof AttributesAndState)){
             return new StringQueryResult(null);

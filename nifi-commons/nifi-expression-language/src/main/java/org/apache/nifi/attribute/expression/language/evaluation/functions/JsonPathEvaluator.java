@@ -56,7 +56,15 @@ public class JsonPathEvaluator extends StringEvaluator {
         } else {
             precompiledJsonPathExp = null;
         }
-
+    }
+    
+    @Override
+    public void reset() {
+        this.subject.reset();
+        if(this.jsonPathExp != null) {
+          this.jsonPathExp.reset();
+        }
+        super.reset();
     }
 
     @Override
